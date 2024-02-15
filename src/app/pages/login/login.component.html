@@ -1,0 +1,47 @@
+<div class="container-full-height">
+    <div class="container-fluid p-5">
+        <div class="shadow">
+            <div class="row">
+                <div class="col-4 px-0">
+                    <img src="../../../assets/img/neon-4029048_1920.jpg" style="height: 88vh; width: 100%;" alt="">
+                </div>
+                <div class="col-8 d-flex justify-content-center align-items-center bg">
+                    <div class="row">
+                        <div class="col-12 justify-content-center">
+                            <p class="h1">Ingresar a FaroAPP</p>
+                            <div>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-12 d-grid">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Usuario</mat-label>
+                                                <input matInput class="top-input" name="user" type="text"
+                                                    placeholder="Username" [(ngModel)]="user.username">
+                                                <mat-icon matSuffix>person</mat-icon>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12 d-grid">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Contraseña</mat-label>
+                                                <input matInput class="bot-input" type="password" name="password"
+                                                    placeholder="Password" [(ngModel)]="user.password">
+                                                <mat-icon matSuffix>lock</mat-icon>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- <a href="" class="float-end">¿Olvido su contraseña?</a> -->
+                            </div>
+                            <div class="row mt-3">
+                                <button mat-raised-button color="primary" (click)="login()">Ingresar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
