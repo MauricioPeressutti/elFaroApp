@@ -24,11 +24,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loginS.login(this.user).subscribe((response: any) => {
-      debugger
       if (response) {
+        let person = response.person;
         localStorage.setItem('currentToken', response.authToken.token)
-        localStorage.setItem('user', response.person)
-        this.router.navigate(['home']);
+        localStorage.setItem('refreshToken', response.refreshToken.token)
+        localStorage.setItem('user', JSON.stringify(person))
+        this.router.navigate(['layout/home']);
       }
     }, (error: any) => {
       if (error.status == 400) {

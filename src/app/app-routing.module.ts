@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutWithoutLoggingInComponentComponent } from './pages/layout-without-logging-in-component/layout-without-logging-in-component.component';
 import { LayoutComponentComponent } from './pages/layout-component/layout-component.component';
 import { LoginComponent } from './pages/login/login.component';
+import { HomeComponent } from './pages/secure/home/home.component';
+import { AuthGuard } from './service/util/auth.guard';
 
 const routes: Routes = [
   // En NotAuthRoutingModule
@@ -22,11 +24,11 @@ const routes: Routes = [
     path: 'layout',
     component: LayoutComponentComponent,
     children: [
-      //  {
-      //     path: 'home',
-      //     component: HomeComponent,
-      //     canActivate: [AuthGuard]
-      //  }
+      {
+        path: 'home',
+        component: HomeComponent,
+        canActivate: [AuthGuard]
+      }
     ]
   },
   // En AppRoutingModule

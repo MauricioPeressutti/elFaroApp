@@ -4,4 +4,44 @@
 html,
 body {
     height: 100%;
+    font-size: 125%;
+}
+
+.card {
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    justify-content: center;
+    gap: 13px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.062);
+    border: 0px;
+    // border-bottom: 10px solid #09ff00;
+}
+
+.card-header {
+    background-color: #59001E;
+    color: #FFFF;
+}
+
+#cookieSvg g path {
+
+    fill: rgb(97, 81, 81);
+}
+
+.cookieHeading {
+    font-size: 2em;
+    font-weight: 800;
+    color: rgb(26, 26, 26);
+}
+
+.cookieDescription {
+    text-align: center;
+    font-size: 1em;
+    font-weight: 600;
+    color: rgb(99, 99, 99);
+}
+
+#cookieSvg {
+    width: 170px;
 }

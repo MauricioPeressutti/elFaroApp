@@ -5,19 +5,35 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 @Injectable()
 export class AuthenticationService {
-  nativeWindow: any;
 
-  constructor() { }
+  private authToken: string | null = null;
 
-  login(username: string, password: string) {
+  constructor(
+    private router: Router,
+  ) { }
 
+  setToken(token: string) {
+    this.authToken = token;
+    // Opcionalmente, puedes guardar el token en el almacenamiento local del navegador
+    localStorage.setItem('authToken', token);
   }
 
-  getToken(procedureTypeId: number, username: string, password: string) {
+  getToken(): string | null {
+    if (!this.authToken) {
+      // Si el token no está en memoria, intenta obtenerlo del almacenamiento local
+      this.authToken = localStorage.getItem('authToken');
+    }
+    return this.authToken;
+  }
 
+  clearToken() {
+    this.authToken = null;
+    // Eliminar el token del almacenamiento local
+    localStorage.removeItem('authToken');
   }
 
   logout() {
-
+    localStorage.clear();
+    this.router.navigate(['']);
   }
 }

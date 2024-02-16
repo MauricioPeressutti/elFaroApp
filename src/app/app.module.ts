@@ -15,12 +15,23 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HomeComponent } from './pages/secure/home/home.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AuthGuard } from './service/util/auth.guard';
+import { AuthenticationService } from './service/util/authentication.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     LayoutWithoutLoggingInComponentComponent,
     LayoutComponentComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    NavBarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -33,10 +44,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTooltipModule
 
   ],
-  providers: [],
+  providers: [AuthGuard, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
