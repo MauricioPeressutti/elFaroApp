@@ -12,13 +12,9 @@
 
 import { habitacionDto } from "./habitacionDto";
 
-export interface turnoDto {
+export interface MercaderiaDto {
     id?: number,
-    patente?: string;
-    dateInit?: string;
-    dateFinish?: Date;
-    cantHoras?: number;
-    habitacionDto: habitacionDto;
-    status: String;
-    progress: number
+    nombre: string;
+    cantidad: Number;
+    precio: Number;
 }

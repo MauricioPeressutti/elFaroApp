@@ -5,6 +5,7 @@ import { LayoutComponentComponent } from './pages/layout-component/layout-compon
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/secure/home/home.component';
 import { AuthGuard } from './service/util/auth.guard';
+import { MercaderiaComponentComponent } from './pages/secure/mercaderia-component/mercaderia-component.component';
 
 const routes: Routes = [
   // En NotAuthRoutingModule
@@ -28,10 +29,14 @@ const routes: Routes = [
         path: 'home',
         component: HomeComponent,
         canActivate: [AuthGuard]
-      }
+      },
+      {
+        path: 'mercaderia',
+        component: MercaderiaComponentComponent,
+        canActivate: [AuthGuard]
+      },
     ]
   },
-  // En AppRoutingModule
   {
     path: '',
     pathMatch: 'full',

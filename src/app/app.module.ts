@@ -21,6 +21,13 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AuthGuard } from './service/util/auth.guard';
 import { AuthenticationService } from './service/util/authentication.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { CreateTurnoDialogComponent } from './pages/secure/dialog/create-turno-dialog/create-turno-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { MercaderiaComponentComponent } from './pages/secure/mercaderia-component/mercaderia-component.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -31,12 +38,15 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     LoginComponent,
     HomeComponent,
     NavBarComponent,
-    FooterComponent
+    FooterComponent,
+    CreateTurnoDialogComponent,
+    MercaderiaComponentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatGridListModule,
     FormsModule,
@@ -45,7 +55,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatInputModule,
     MatIconModule,
     MatSnackBarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatAutocompleteModule,
+    MatTableModule
 
   ],
   providers: [AuthGuard, AuthenticationService],

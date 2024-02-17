@@ -1,0 +1,70 @@
+<div class="container">
+
+    <div class="div mt-3 text-center">
+        <h2>Agregar Productos</h2>
+        <div class="row mt-3">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12 d-grid">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Producto</mat-label>
+                            <input type="text" matInput [formControl]="mercaderiaControl"
+                                (ngModelChange)="getMercaderiaPorAproximacion($event)" [matAutocomplete]="auto">
+                            <mat-icon matSuffix>inventory</mat-icon>
+                            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                                <mat-option *ngFor="let option of filteredOptions" [value]="option.nombre">
+                                    {{ option.nombre }}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6 d-grid">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Cantidad</mat-label>
+                            <input matInput [(ngModel)]="cantidad">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6 d-grid">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Precio</mat-label>
+                            <input matInput [(ngModel)]="precio">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-12 d-grid">
+                    <button mat-raised-button color="primary" (click)="updateMercaderia()">
+                        <mat-icon>add</mat-icon>
+                        Agregar Producto
+                    </button>
+                </div>
+            </div>
+            <div class="col-6 text-center">
+                <mat-table [dataSource]="dataSource">
+                    <!-- Columna de nombre -->
+                    <ng-container matColumnDef="Nombre">
+                        <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+                        <mat-cell *matCellDef="let elemento"> {{ elemento.nombre }} </mat-cell>
+                    </ng-container>
+
+                    <!-- Columna de cantidad -->
+                    <ng-container matColumnDef="Cantidad">
+                        <mat-header-cell *matHeaderCellDef> Cantidad </mat-header-cell>
+                        <mat-cell *matCellDef="let elemento"> {{ elemento.cantidad }} </mat-cell>
+                    </ng-container>
+
+                    <!-- Columna de precio -->
+                    <ng-container matColumnDef="Precio">
+                        <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
+                        <mat-cell *matCellDef="let elemento"> {{ elemento.precio }} </mat-cell>
+                    </ng-container>
+
+                    <!-- Definición de las columnas -->
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+            </div>
+        </div>
+
+    </div>
+
+</div>

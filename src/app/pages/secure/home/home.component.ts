@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { interval } from 'rxjs';
 import { turnoDto } from 'src/app/model/turnoDto';
 import { TurnosService } from 'src/app/service/turnos.service';
+import { CreateTurnoDialogComponent } from '../dialog/create-turno-dialog/create-turno-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +16,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private turnoService: TurnosService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -66,6 +69,17 @@ export class HomeComponent implements OnInit {
         debugger
       }
     })
+  }
+
+  createNewTurno() {
+    const dialogRef = this.dialog.open(CreateTurnoDialogComponent, {
+      minWidth: '50vw'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getTurnosList();
+      }
+    });
   }
 
 }

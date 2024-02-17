@@ -16,6 +16,9 @@ export class TurnosService {
     getAllActiveTurnos() {
         return this.http.get('/secure/turno/active');
     }
+    createTurno(dto: turnoDto) {
+        return this.http.post('/secure/turno/create', dto);
+    }
     closeTurno(dto: turnoDto) {
         return this.http.put('/secure/turno/update', dto);
     }
