@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Agregar Consumicion</h2>
+<mat-dialog-content class="d-grid">
+    <mat-form-field appearance="fill">
+        <mat-label>Habitacion</mat-label>
+        <mat-select [(ngModel)]="mercaderiaSelected">
+            <mat-option [value]="mercaderia.id"
+                *ngFor="let mercaderia of mercaderiaList;">{{mercaderia.nombre}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-content>
+    <mat-form-field appearance="fill" class="me-5">
+        <mat-label>Cantidad</mat-label>
+        <input matInput [(ngModel)]="cantidad" type="number">
+    </mat-form-field>
+    <mat-slide-toggle color="primary">Consumicion Gratis?</mat-slide-toggle>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+    <button mat-raised-button color="primary" [mat-dialog-close]="true">Agregar consumiciones</button>
+</mat-dialog-actions>

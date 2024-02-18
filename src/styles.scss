@@ -45,3 +45,16 @@ body {
 #cookieSvg {
     width: 170px;
 }
+
+/* Oculta las flechas de incremento/decremento en Chrome, Safari y Edge */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-clear-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Oculta las flechas de incremento/decremento en Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}

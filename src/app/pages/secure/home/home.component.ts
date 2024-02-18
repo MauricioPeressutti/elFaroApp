@@ -5,6 +5,7 @@ import { interval } from 'rxjs';
 import { turnoDto } from 'src/app/model/turnoDto';
 import { TurnosService } from 'src/app/service/turnos.service';
 import { CreateTurnoDialogComponent } from '../dialog/create-turno-dialog/create-turno-dialog.component';
+import { AddMercaderiaDialogComponent } from '../dialog/add-mercaderia-dialog/add-mercaderia-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ import { CreateTurnoDialogComponent } from '../dialog/create-turno-dialog/create
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
   tunoList: turnoDto[] = [];
 
   constructor(
@@ -73,6 +75,17 @@ export class HomeComponent implements OnInit {
 
   createNewTurno() {
     const dialogRef = this.dialog.open(CreateTurnoDialogComponent, {
+      minWidth: '50vw'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getTurnosList();
+      }
+    });
+  }
+
+  addMercaderiaDialog() {
+    const dialogRef = this.dialog.open(AddMercaderiaDialogComponent, {
       minWidth: '50vw'
     });
     dialogRef.afterClosed().subscribe(result => {

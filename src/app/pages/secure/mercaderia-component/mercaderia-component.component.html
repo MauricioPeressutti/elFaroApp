@@ -21,13 +21,13 @@
                     <div class="col-6 d-grid">
                         <mat-form-field appearance="fill">
                             <mat-label>Cantidad</mat-label>
-                            <input matInput [(ngModel)]="cantidad">
+                            <input matInput type="number" [(ngModel)]="cantidad">
                         </mat-form-field>
                     </div>
                     <div class="col-6 d-grid">
                         <mat-form-field appearance="fill">
                             <mat-label>Precio</mat-label>
-                            <input matInput [(ngModel)]="precio">
+                            <input matInput type="number" [(ngModel)]="precio">
                         </mat-form-field>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                     <!-- Columna de precio -->
                     <ng-container matColumnDef="Precio">
                         <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
-                        <mat-cell *matCellDef="let elemento"> {{ elemento.precio }} </mat-cell>
+                        <mat-cell *matCellDef="let elemento"> {{ elemento.precio | currency}} </mat-cell>
                     </ng-container>
 
                     <!-- Definición de las columnas -->

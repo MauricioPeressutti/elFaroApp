@@ -28,6 +28,8 @@ import { MercaderiaComponentComponent } from './pages/secure/mercaderia-componen
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
+import { AddMercaderiaDialogComponent } from './pages/secure/dialog/add-mercaderia-dialog/add-mercaderia-dialog.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import { MatTableModule } from '@angular/material/table';
     NavBarComponent,
     FooterComponent,
     CreateTurnoDialogComponent,
-    MercaderiaComponentComponent
+    MercaderiaComponentComponent,
+    AddMercaderiaDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ import { MatTableModule } from '@angular/material/table';
     MatDialogModule,
     MatSelectModule,
     MatAutocompleteModule,
-    MatTableModule
+    MatTableModule,
+    MatSlideToggleModule
 
   ],
   providers: [AuthGuard, AuthenticationService],

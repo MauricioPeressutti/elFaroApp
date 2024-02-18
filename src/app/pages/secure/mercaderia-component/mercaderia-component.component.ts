@@ -15,7 +15,7 @@ export class MercaderiaComponentComponent implements OnInit {
   filteredOptions: MercaderiaDto[] = [];
   mercaderiaControl = new FormControl();
   cantidad: number = 0
-  precio: number = 0
+  precio: number | null = null;
   mercaderiaList: MercaderiaDto[] = [];
   displayedColumns: string[] = ['Nombre', 'Cantidad', 'Precio'];
   dataSource: MatTableDataSource<MercaderiaDto> = new MatTableDataSource<MercaderiaDto>([]);
@@ -55,7 +55,7 @@ export class MercaderiaComponentComponent implements OnInit {
     }
     let prodSearch;
     dto.cantidad = this.cantidad;
-    dto.precio = this.precio;
+    dto.precio = Number(this.precio);
     prodSearch = this.filteredOptions.find(element => element.nombre === this.mercaderiaControl.value);
     if (prodSearch) {
       dto.id = prodSearch.id;
@@ -105,6 +105,13 @@ export class MercaderiaComponentComponent implements OnInit {
         console.error(err);
       }
     });
+  }
+
+  clearFrom() {
+    this.mercaderiaControl.setValue(null);
+    this.cantidad = 0;
+    this.precio = 0;
+
   }
 }
 
