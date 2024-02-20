@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Ajustar Tiempo</h2>
+<mat-dialog-content class="d-grid">
+    <mat-form-field appearance="fill">
+        <mat-label>Tiempo</mat-label>
+        <mat-select [(ngModel)]="timeSelected">
+            <mat-option [value]="time" *ngFor="let time of timeList;">{{time.nombre}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+    <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="addTime()">Ajustar Tiempo</button>
+</mat-dialog-actions>

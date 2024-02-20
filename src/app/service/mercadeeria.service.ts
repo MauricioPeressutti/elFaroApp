@@ -35,6 +35,10 @@ export class MercaderiaService {
         return this.http.post('/secure/mercaderia/create', obj);
     }
 
+    addMercaderia(obj: turnoDto) {
+        return this.http.post('/secure/mercaderia/add', obj);
+    }
+
     private mapResponseToDTO(response: any[]): MercaderiaDto[] {
         return response.map(item => {
             const mercaderiaDTO: MercaderiaDto = {

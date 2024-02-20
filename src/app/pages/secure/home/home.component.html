@@ -45,8 +45,47 @@
                                         {{turno.dateFinish | date: 'dd/mm/yy h:mm a'}}
                                     </span></td>
                             </tr>
+                            <tr>
+                                <td>Saldo</td>
+                                <td><span
+                                        class=" mx-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">
+                                        {{turno.precioTotal.toString() | currency}}
+                                    </span></td>
+                            </tr>
+
+
                         </tbody>
                     </table>
+                    <div class="accordion accordion-flush" id="accordionFlushExample"
+                        *ngIf="turno.mercaderiaList && turno.mercaderiaList.length > 0">
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                    aria-controls="flush-collapseOne">
+                                    Consumiciones
+                                </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item d-flex justify-content-between align-items-start"
+                                            *ngFor="let merc of turno.mercaderiaList;">
+                                            <div class="ms-2 me-auto">
+                                                {{merc.nombre}}
+                                            </div>
+                                            <span class="badge bg-info rounded-pill fw-lighter">{{merc.precio.toString()
+                                                | currency}}</span>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                     <!-- <span
                         class="mb-3 mx-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">
                         Dia: {{turno.dateInit | date: 'dd/mm/yy'}}
@@ -62,11 +101,12 @@
                 <div class="row p-2 justify-content-evenly">
 
                     <button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon"
-                        matTooltip="Agregar Producto" [matTooltipPosition]="'right'" (click)="addMercaderiaDialog()">
+                        matTooltip="Agregar Producto" [matTooltipPosition]="'right'"
+                        (click)="addMercaderiaDialog(turno)">
                         <mat-icon>add_shopping_cart</mat-icon>
                     </button>
                     <button mat-mini-fab color="accent" aria-label="Example icon button with a delete icon"
-                        matTooltip="Agregar tiempo" [matTooltipPosition]="'right'">
+                        matTooltip="Agregar tiempo" [matTooltipPosition]="'right'" (click)="addTimeDialog(turno)">
                         <mat-icon>more_time</mat-icon>
                     </button>
                     <button mat-mini-fab color="warn" aria-label="Example icon button with a heart icon"

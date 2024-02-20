@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/secure/home/home.component';
 import { AuthGuard } from './service/util/auth.guard';
 import { MercaderiaComponentComponent } from './pages/secure/mercaderia-component/mercaderia-component.component';
+import { UserGestionComponent } from './pages/secure/user-gestion/user-gestion.component';
 
 const routes: Routes = [
   // En NotAuthRoutingModule
@@ -35,13 +36,20 @@ const routes: Routes = [
         component: MercaderiaComponentComponent,
         canActivate: [AuthGuard]
       },
+      {
+        path: 'userGestion',
+        component: UserGestionComponent,
+        canActivate: [AuthGuard]
+      },
     ]
   },
   {
     path: '',
     pathMatch: 'full',
     redirectTo: 'init/login'  // Redirige directamente al componente de inicio de sesión
-  }
+  },
+  { path: '**', component: LoginComponent }
+
 ];
 
 @NgModule({

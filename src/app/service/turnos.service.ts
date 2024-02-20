@@ -22,4 +22,7 @@ export class TurnosService {
     closeTurno(dto: turnoDto) {
         return this.http.put('/secure/turno/update', dto);
     }
+    updateTurno(dto: turnoDto) {
+        return this.http.put('/secure/turno/update', dto);
+    }
 }

@@ -11,7 +11,7 @@ import { TurnosService } from 'src/app/service/turnos.service';
 })
 export class CreateTurnoDialogComponent implements OnInit {
   habitacionList: habitacionDto[] = [];
-  habitacionSelected: number = 0;
+  habitacionSelected!: habitacionDto;
   patente: string = '';
 
   constructor(
@@ -28,12 +28,10 @@ export class CreateTurnoDialogComponent implements OnInit {
       patente: this.patente,
       dateFinish: undefined,
       cantHoras: 0,
-      habitacionDto: {
-        id: this.habitacionSelected,
-        precio: 0
-      },
+      habitacionDto: this.habitacionSelected,
       status: 'ACT',
-      progress: 0
+      progress: 0,
+      precioTotal: 0
     }
     this.turnosService.createTurno(turnoDto).subscribe({
       next: (response) => {
@@ -41,7 +39,7 @@ export class CreateTurnoDialogComponent implements OnInit {
         }
       },
       error: (err) => {
-        debugger
+
       }
     })
   }
@@ -52,7 +50,7 @@ export class CreateTurnoDialogComponent implements OnInit {
         this.habitacionList = response;
       },
       error: (err) => {
-        debugger
+
       }
     })
   }

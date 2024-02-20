@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 
+import { MercaderiaDto } from "./MercaderiaDto";
 import { habitacionDto } from "./habitacionDto";
 
 export interface turnoDto {
@@ -21,4 +22,6 @@ export interface turnoDto {
     habitacionDto: habitacionDto;
     status: String;
     progress: number
+    mercaderiaList?: MercaderiaDto[];
+    precioTotal: number;
 }

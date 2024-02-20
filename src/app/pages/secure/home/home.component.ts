@@ -6,6 +6,7 @@ import { turnoDto } from 'src/app/model/turnoDto';
 import { TurnosService } from 'src/app/service/turnos.service';
 import { CreateTurnoDialogComponent } from '../dialog/create-turno-dialog/create-turno-dialog.component';
 import { AddMercaderiaDialogComponent } from '../dialog/add-mercaderia-dialog/add-mercaderia-dialog.component';
+import { AddTimeDialogComponent } from '../dialog/add-time-dialog/add-time-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ import { AddMercaderiaDialogComponent } from '../dialog/add-mercaderia-dialog/ad
 export class HomeComponent implements OnInit {
 
   tunoList: turnoDto[] = [];
+  panelOpenState = false;
 
   constructor(
     private turnoService: TurnosService,
@@ -42,7 +44,7 @@ export class HomeComponent implements OnInit {
         }
       },
       error: (err) => {
-        debugger
+
       }
     })
   }
@@ -53,7 +55,7 @@ export class HomeComponent implements OnInit {
         this.tunoList = response;
       },
       error: (err) => {
-        debugger
+
       }
     })
   }
@@ -68,7 +70,7 @@ export class HomeComponent implements OnInit {
         }
       },
       error: (err) => {
-        debugger
+
       }
     })
   }
@@ -84,9 +86,24 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  addMercaderiaDialog() {
+  addTimeDialog(turno: turnoDto) {
+    const dialogRef = this.dialog.open(AddTimeDialogComponent, {
+      minWidth: '50vw',
+      data: turno
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      debugger
+      if (result) {
+        this.getTurnosList();
+      }
+    });
+  }
+
+
+  addMercaderiaDialog(turno: turnoDto) {
     const dialogRef = this.dialog.open(AddMercaderiaDialogComponent, {
-      minWidth: '50vw'
+      minWidth: '50vw',
+      data: turno
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {

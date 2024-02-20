@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserDto } from 'src/app/model/userDto';
 import { LoginService } from 'src/app/service/login.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ErrorService } from 'src/app/service/error.service';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private loginS: LoginService,
+    private errorService: ErrorService,
     private _snackBar: MatSnackBar
   ) { }
 
@@ -25,6 +27,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginS.login(this.user).subscribe((response: any) => {
       if (response) {
+        debugger
         let person = response.person;
         localStorage.setItem('currentToken', response.authToken.token)
         localStorage.setItem('refreshToken', response.refreshToken.token)
@@ -32,11 +35,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['layout/home']);
       }
     }, (error: any) => {
-      if (error.status == 400) {
-        this._snackBar.open(error.error.msg ? error.error.msg : 'Error al logear', 'Cerrar')
-      } else {
-        this._snackBar.open('Error', 'ok')
-      }
+      debugger
+      //this.errorService.sendError(error);
     })
   }
 }

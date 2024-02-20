@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HomeComponent } from './pages/secure/home/home.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
@@ -30,7 +30,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { AddMercaderiaDialogComponent } from './pages/secure/dialog/add-mercaderia-dialog/add-mercaderia-dialog.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-
+import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { AddTimeDialogComponent } from './pages/secure/dialog/add-time-dialog/add-time-dialog.component';
+import { UserGestionComponent } from './pages/secure/user-gestion/user-gestion.component';
+import { AuthInterceptor } from './service/util/authInterceptor.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     FooterComponent,
     CreateTurnoDialogComponent,
     MercaderiaComponentComponent,
-    AddMercaderiaDialogComponent
+    AddMercaderiaDialogComponent,
+    AddTimeDialogComponent,
+    UserGestionComponent
   ],
   imports: [
     BrowserModule,
@@ -63,10 +69,12 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatSelectModule,
     MatAutocompleteModule,
     MatTableModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDividerModule,
+    MatExpansionModule
 
   ],
-  providers: [AuthGuard, AuthenticationService],
+  providers: [AuthGuard, AuthenticationService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

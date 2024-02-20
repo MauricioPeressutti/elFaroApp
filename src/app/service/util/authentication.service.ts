@@ -15,13 +15,13 @@ export class AuthenticationService {
   setToken(token: string) {
     this.authToken = token;
     // Opcionalmente, puedes guardar el token en el almacenamiento local del navegador
-    localStorage.setItem('authToken', token);
+    localStorage.setItem('currentToken', token);
   }
 
   getToken(): string | null {
     if (!this.authToken) {
       // Si el token no está en memoria, intenta obtenerlo del almacenamiento local
-      this.authToken = localStorage.getItem('authToken');
+      this.authToken = localStorage.getItem('currentToken');
     }
     return this.authToken;
   }
@@ -29,7 +29,7 @@ export class AuthenticationService {
   clearToken() {
     this.authToken = null;
     // Eliminar el token del almacenamiento local
-    localStorage.removeItem('authToken');
+    localStorage.removeItem('currentToken');
   }
 
   logout() {

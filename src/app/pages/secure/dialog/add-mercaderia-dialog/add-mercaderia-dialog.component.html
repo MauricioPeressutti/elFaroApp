@@ -1,22 +1,50 @@
 <h2 mat-dialog-title>Agregar Consumicion</h2>
-<mat-dialog-content class="d-grid">
-    <mat-form-field appearance="fill">
-        <mat-label>Habitacion</mat-label>
-        <mat-select [(ngModel)]="mercaderiaSelected">
-            <mat-option [value]="mercaderia.id"
-                *ngFor="let mercaderia of mercaderiaList;">{{mercaderia.nombre}}</mat-option>
-        </mat-select>
-    </mat-form-field>
+<mat-dialog-content class="">
+    <div class="row">
+        <div class="col-9 d-grid">
+            <mat-form-field appearance="fill">
+                <mat-label>Producto</mat-label>
+                <mat-select [(ngModel)]="mercaderiaSelected">
+                    <mat-option [value]="mercaderia"
+                        *ngFor="let mercaderia of mercaderiaList;">{{mercaderia.nombre}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-3 d-flex justify-content-center align-items-center">
+            <mat-slide-toggle color="primary" [(ngModel)]="gratis">Consumicion Gratis?</mat-slide-toggle>
+        </div>
+    </div>
 </mat-dialog-content>
 <mat-dialog-content>
-    <mat-form-field appearance="fill" class="me-5">
-        <mat-label>Cantidad</mat-label>
-        <input matInput [(ngModel)]="cantidad" type="number">
-    </mat-form-field>
-    <mat-slide-toggle color="primary">Consumicion Gratis?</mat-slide-toggle>
+    <div class="row  justify-content-center ">
+        <div class="col-6 d-grid">
+            <button mat-raised-button color="primary" (click)="addListado(mercaderiaSelected)"
+                [disabled]="!mercaderiaSelected">Agregar</button>
+        </div>
+        <mat-divider class="mt-2"></mat-divider>
+        <div class="col-10 mt-3">
+            <h3>Listado de productos</h3>
+            <ol class="list-group list-group-numbered">
+                <li class="list-group-item d-flex justify-content-between align-items-start bg-dark p-2 text-bg-primary"
+                    *ngFor="let merc of listado;">
+                    <div class="ms-2 me-auto">
+                        <div class="">{{merc.nombre}}</div>
+                    </div>
+                    <span class="badge bg-primary rounded-pill fw-lighter"
+                        *ngIf="merc.precio == 0; else elseBlock">Consumicion</span>
+                    <ng-template #elseBlock>
+                        <span class="badge bg-primary rounded-pill fw-lighter">{{merc.precio.toString()|
+                            currency}}</span>
+                    </ng-template>
+                </li>
+            </ol>
+        </div>
+    </div>
+
 </mat-dialog-content>
-<mat-dialog-actions>
+<mat-dialog-actions class="mt-5">
     <button mat-button mat-dialog-close>Cancel</button>
     <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
-    <button mat-raised-button color="primary" [mat-dialog-close]="true">Agregar consumiciones</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="createMercaderia()">Agregar
+        consumiciones</button>
 </mat-dialog-actions>

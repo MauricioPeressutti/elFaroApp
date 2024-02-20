@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-export interface UserDto { 
+export interface UserDto {
     username?: string;
     password?: string;
     personId?: number;
@@ -20,4 +20,5 @@ export interface UserDto {
     email?: string;
     phone?: string;
     userId?: number;
+    isOwner?: boolean;
 }
