@@ -92,9 +92,7 @@ export class HomeComponent implements OnInit {
       minWidth: '50vw'
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.getTurnosList();
-      }
+      this.getTurnosList();
     });
   }
 

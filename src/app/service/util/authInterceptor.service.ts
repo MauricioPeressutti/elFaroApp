@@ -47,7 +47,7 @@ export class AuthInterceptor implements HttpInterceptor {
                             break;
                     }
                 }
-                this.snackBar.open(errorMessage, 'Close', {
+                this.snackBar.open(errorMessage, 'CERRAR', {
                     duration: 3000,
                 });
                 return throwError(errorMessage);

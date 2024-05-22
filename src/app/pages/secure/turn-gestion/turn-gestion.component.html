@@ -1,25 +1,28 @@
 <div class="container">
     <h2 class="mt-3">Balance de Turnos</h2>
-    <div class="row">
+    <div class="row mb-4">
         <div class="col-4 d-grid ">
-            <button mat-raised-button color="primary" (click)="getTurnosListForDays(24)">
+            <button mat-raised-button color="primary" [disabled]="buttonD" (click)="getTurnosListForDays(24, 'D')">
                 <mat-icon class="pe-4">date_range</mat-icon>
                 Dia
             </button>
         </div>
         <div class="col-4 d-grid">
-            <button mat-raised-button color="primary" (click)="getTurnosListForDays(168)">
+            <button mat-raised-button color="primary" [disabled]="buttonS" (click)="getTurnosListForDays(168, 'S')">
                 <mat-icon class="pe-4">date_range</mat-icon>
                 Semana
             </button>
         </div>
         <div class="col-4 d-grid">
-            <button mat-raised-button color="primary" (click)="getTurnosListForDays(744)">
+            <button mat-raised-button color="primary" [disabled]="buttonM" (click)="getTurnosListForDays(744, 'M')">
                 <mat-icon class="pe-4">date_range</mat-icon>
                 Mes
             </button>
         </div>
     </div>
+    <span class="turnosDias" *ngIf="buttonD">Turnos de las ultimas 24HS:</span>
+    <span class="turnosDias" *ngIf="buttonS">Turnos de las ultimas 7 dias:</span>
+    <span class="turnosDias" *ngIf="buttonM">Turnos de las ultimas 31 dias:</span>
     <div class="row mt-3">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 

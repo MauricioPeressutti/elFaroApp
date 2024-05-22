@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { UserDto } from 'src/app/model/userDto';
 import { UserService } from 'src/app/service/user.service';
 
@@ -17,7 +19,10 @@ export class UserGestionComponent implements OnInit {
   isOwner: boolean = false;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private snackBar: MatSnackBar,
+    private router: Router,
+
   ) { }
 
   ngOnInit(): void {
@@ -34,9 +39,12 @@ export class UserGestionComponent implements OnInit {
       password: this.contra,
     }
     this.userService.createTurno(userDto).subscribe({
-      next: (response) => {
+      next: (response: any) => {
         if (response) {
-          debugger
+          this.snackBar.open('Usuario ' + response?.username + ' Creado con exito', 'CERRAR', {
+            duration: 3000,
+          });
+          this.router.navigate(['layout/home']);
         }
       },
       error: (err) => {

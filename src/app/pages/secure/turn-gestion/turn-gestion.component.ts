@@ -13,6 +13,9 @@ export class TurnGestionComponent implements OnInit {
   displayedColumns: string[] = ['id', 'patente', 'dateInit', 'dateFinish', 'precioTotal', 'habitacion'];
   dataSource: MatTableDataSource<turnoDto>;
   balance: any;
+  buttonD: boolean = false;
+  buttonS: boolean = false;
+  buttonM: boolean = false;
 
   constructor(
     private turnoService: TurnosService
@@ -36,11 +39,31 @@ export class TurnGestionComponent implements OnInit {
     })
   }
 
-  getTurnosListForDays(days: Number) {
+  getTurnosListForDays(days: Number, filter: String) {
     this.turnoService.getAllBalanceTurnosByDays(days).subscribe({
       next: (response) => {
         this.balance = response;
         this.dataSource.data = response.turnoList;
+        switch (filter) {
+          case 'D': {
+            this.buttonD = true;
+            this.buttonS = false;
+            this.buttonM = false;
+            break;
+          }
+          case 'S': {
+            this.buttonD = false;
+            this.buttonS = true;
+            this.buttonM = false;
+            break;
+          }
+          case 'M': {
+            this.buttonD = false;
+            this.buttonS = false;
+            this.buttonM = true;
+            break;
+          }
+        }
       },
       error: (err) => {
         console.error('Error fetching turnos', err);

@@ -3,6 +3,7 @@ import { habitacionDto } from 'src/app/model/habitacionDto';
 import { turnoDto } from 'src/app/model/turnoDto';
 import { HabitacionService } from 'src/app/service/habitacion.service';
 import { TurnosService } from 'src/app/service/turnos.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-turno-dialog',
@@ -15,6 +16,7 @@ export class CreateTurnoDialogComponent implements OnInit {
   patente: string = '';
 
   constructor(
+    public dialogRef: MatDialogRef<CreateTurnoDialogComponent>,
     private habitacionService: HabitacionService,
     private turnosService: TurnosService
   ) { }
@@ -35,8 +37,7 @@ export class CreateTurnoDialogComponent implements OnInit {
     }
     this.turnosService.createTurno(turnoDto).subscribe({
       next: (response) => {
-        if (response) {
-        }
+        this.closeDialog();
       },
       error: (err) => {
 
@@ -53,5 +54,9 @@ export class CreateTurnoDialogComponent implements OnInit {
 
       }
     })
+  }
+
+  closeDialog(): void {
+    this.dialogRef.close();
   }
 }
