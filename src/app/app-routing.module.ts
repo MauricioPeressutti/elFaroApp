@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/secure/home/home.component';
 import { AuthGuard } from './service/util/auth.guard';
 import { MercaderiaComponentComponent } from './pages/secure/mercaderia-component/mercaderia-component.component';
 import { UserGestionComponent } from './pages/secure/user-gestion/user-gestion.component';
+import { TurnGestionComponent } from './pages/secure/turn-gestion/turn-gestion.component';
 
 const routes: Routes = [
   // En NotAuthRoutingModule
@@ -39,6 +40,11 @@ const routes: Routes = [
       {
         path: 'userGestion',
         component: UserGestionComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'turnGestion',
+        component: TurnGestionComponent,
         canActivate: [AuthGuard]
       },
     ]

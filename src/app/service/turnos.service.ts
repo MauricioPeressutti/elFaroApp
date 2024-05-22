@@ -25,4 +25,11 @@ export class TurnosService {
     updateTurno(dto: turnoDto) {
         return this.http.put('/secure/turno/update', dto);
     }
+    getAllBalanceTurnos() {
+        return this.http.get('/secure/turno/balance');
+    }
+
+    getAllBalanceTurnosByDays(days: Number) {
+        return this.http.get('/secure/turno/balance/' + days);
+    }
 }

@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   // API_ENDPOINT: 'http://churrasco.uk.to:3005/',
-  API_ENDPOINT: 'http://localhost:8080/faro',
+  // API_ENDPOINT: 'http://localhost:8080/faro',
+  API_ENDPOINT: 'https://faroproject.rj.r.appspot.com/faro',
 };
 /*
  * For easier debugging in development mode, you can import the following file

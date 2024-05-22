@@ -7,6 +7,8 @@ import { TurnosService } from 'src/app/service/turnos.service';
 import { CreateTurnoDialogComponent } from '../dialog/create-turno-dialog/create-turno-dialog.component';
 import { AddMercaderiaDialogComponent } from '../dialog/add-mercaderia-dialog/add-mercaderia-dialog.component';
 import { AddTimeDialogComponent } from '../dialog/add-time-dialog/add-time-dialog.component';
+import { MercaderiaDto } from 'src/app/model/MercaderiaDto';
+import { ListadoMercaderiaDialogComponent } from '../dialog/listado-mercaderia-dialog/listado-mercaderia-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -75,6 +77,16 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  listadoMercaderia(listado: MercaderiaDto[], hab: any) {
+    const dialogRef = this.dialog.open(ListadoMercaderiaDialogComponent, {
+      minWidth: '50vw',
+      data: {
+        list: listado,
+        habitacion: hab
+      }
+    });
+  }
+
   createNewTurno() {
     const dialogRef = this.dialog.open(CreateTurnoDialogComponent, {
       minWidth: '50vw'
@@ -92,7 +104,6 @@ export class HomeComponent implements OnInit {
       data: turno
     });
     dialogRef.afterClosed().subscribe(result => {
-      debugger
       if (result) {
         this.getTurnosList();
       }
@@ -112,4 +123,14 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  calcularTotal(turno: turnoDto): number {
+    let total = 0;
+    // Comprobar si turno y turno.mercaderiaList son diferentes de undefined
+    if (turno && turno.mercaderiaList) {
+      for (const merc of turno.mercaderiaList) {
+        total += Number(merc.precio);
+      }
+    }
+    return total;
+  }
 }

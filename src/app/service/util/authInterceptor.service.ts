@@ -12,7 +12,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // Agregar el token al encabezado de autorización si está disponible
-        const token = this.authService.getToken(); // Método ficticio para obtener el token desde AuthService
+        const token = this.authService.getToken();
         if (token) {
             request = request.clone({
                 setHeaders: {
@@ -26,10 +26,8 @@ export class AuthInterceptor implements HttpInterceptor {
                 let errorMessage = 'An error occurred';
                 if (error.error instanceof ErrorEvent) {
                     // Error del lado del cliente
-                    debugger
                     errorMessage = `Error: ${error.error.message}`;
                 } else {
-                    debugger
                     // Error del lado del servidor
                     switch (error.status) {
                         case 400:

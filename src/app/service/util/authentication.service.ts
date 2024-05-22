@@ -19,10 +19,7 @@ export class AuthenticationService {
   }
 
   getToken(): string | null {
-    if (!this.authToken) {
-      // Si el token no está en memoria, intenta obtenerlo del almacenamiento local
-      this.authToken = localStorage.getItem('currentToken');
-    }
+    this.authToken = localStorage.getItem('currentToken');
     return this.authToken;
   }
 

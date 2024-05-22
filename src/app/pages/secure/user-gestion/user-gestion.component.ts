@@ -35,7 +35,6 @@ export class UserGestionComponent implements OnInit {
     }
     this.userService.createTurno(userDto).subscribe({
       next: (response) => {
-        debugger
         if (response) {
           debugger
         }

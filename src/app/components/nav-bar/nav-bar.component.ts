@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/service/login.service';
 import { AuthenticationService } from 'src/app/service/util/authentication.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class NavBarComponent implements OnInit {
   user: any;
 
   constructor(
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private loginService: LoginService
   ) { }
 
   ngOnInit(): void {
@@ -23,4 +25,7 @@ export class NavBarComponent implements OnInit {
     }
   }
 
+  cerrarSesion() {
+    this.loginService.logout();
+  }
 }

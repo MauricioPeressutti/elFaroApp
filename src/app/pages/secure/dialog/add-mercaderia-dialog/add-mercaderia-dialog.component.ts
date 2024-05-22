@@ -59,7 +59,6 @@ export class AddMercaderiaDialogComponent implements OnInit {
     this.listado.push(obj);
 
     //Limpio el form
-
     this.gratis = false;
     this.mercaderiaSelected = null
   }

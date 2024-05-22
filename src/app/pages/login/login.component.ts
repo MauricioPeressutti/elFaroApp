@@ -25,9 +25,10 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    // USER 11222333
+    // PASS 1234
     this.loginS.login(this.user).subscribe((response: any) => {
       if (response) {
-        debugger
         let person = response.person;
         localStorage.setItem('currentToken', response.authToken.token)
         localStorage.setItem('refreshToken', response.refreshToken.token)

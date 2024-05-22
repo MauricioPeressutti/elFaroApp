@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid px-5">
     <div class="row mb-5">
         <div class="col-12 text-center mt-3">
             <button mat-raised-button color="primary" (click)="createNewTurno()" matTooltip="Creacion de nuevo turno"
@@ -7,7 +7,7 @@
                 Nuevo
             </button>
         </div>
-        <div class="col-lg-4 col-xg-4 col-12  mt-3" *ngFor="let turno of tunoList;">
+        <!-- <div class="col-lg-4 col-xg-4 col-12  mt-3" *ngFor="let turno of tunoList;">
             <div class="card">
 
                 <div class="card-header">
@@ -86,15 +86,6 @@
                         </div>
 
                     </div>
-                    <!-- <span
-                        class="mb-3 mx-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">
-                        Dia: {{turno.dateInit | date: 'dd/mm/yy'}}
-                    </span> -->
-
-                    <!-- <span
-                        class="mb-3 mx-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">
-                        Hora: {{turno.dateInit | date: 'h:mm a'}}
-                    </span> -->
                 </div>
 
 
@@ -123,7 +114,195 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+        <div class="col-lg-6 col-xg-6 col-12  mt-3" *ngFor="let turno of tunoList;">
+            <div class="card">
+                <!-- <div class="card-header">
+                    <h2 class="">{{turno.habitacionDto.nombre}}</h2>
+                </div> -->
+                <!-- <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" id="cookieSvg" height="130" viewBox="0 -960 960 960"
+                        width="130">
+                        <path
+                            d="M190.769-240h-21.538L154-320h-34v-200h80v-160h560v160h80v200h-34l-15.231 80h-21.538L754-320H206l-15.231 80ZM500-520h220v-120H500v120Zm-260 0h220v-120H240v120Z"
+                            stroke="black" stroke-width="10" />
+                    </svg>
+                </div> -->
+                <!-- <div class="">
+                    <table class="table">
+                        <tbody>
+                            <tr *ngIf="turno.patente">
+                                <td>Patente</td>
+                                <td><span
+                                        class=" mx-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">
+                                        {{turno.patente}}
+                                    </span></td>
+                            </tr>
+                            <tr>
+                                <td>Ingreso</td>
+                                <td><span
+                                        class=" mx-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">
+                                        {{turno.dateInit | date: 'dd/mm/yy h:mm a'}}
+                                    </span></td>
+                            </tr>
+                            <tr>
+                                <td>Salida</td>
+                                <td><span
+                                        class=" mx-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">
+                                        {{turno.dateFinish | date: 'dd/mm/yy h:mm a'}}
+                                    </span></td>
+                            </tr>
+                            <tr>
+                                <td>Saldo</td>
+                                <td><span
+                                        class=" mx-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">
+                                        {{turno.precioTotal.toString() | currency}}
+                                    </span></td>
+                            </tr>
 
+
+                        </tbody>
+                    </table>
+                    <div class="accordion accordion-flush" id="accordionFlushExample"
+                        *ngIf="turno.mercaderiaList && turno.mercaderiaList.length > 0">
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                    aria-controls="flush-collapseOne">
+                                    Consumiciones
+                                </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item d-flex justify-content-between align-items-start"
+                                            *ngFor="let merc of turno.mercaderiaList;">
+                                            <div class="ms-2 me-auto">
+                                                {{merc.nombre}}
+                                            </div>
+                                            <span class="badge bg-info rounded-pill fw-lighter">{{merc.precio.toString()
+                                                | currency}}</span>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div> -->
+                <div class="card-header">
+                    <h2 class="">{{turno.habitacionDto.nombre}}</h2>
+                </div>
+                <div class="row">
+                    <div class="col-8 border-end border-black">
+                        <h3>Vehiculos y Patentes</h3>
+                        <span
+                            class="px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">
+                            {{turno.patente}}
+                        </span>
+                    </div>
+                    <div class="col-4">
+                        <h3>Ingreso</h3>
+                        <span
+                            class="px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">
+                            {{turno.dateInit | date:'dd/MM/yyyy, h:mm a'}}
+                        </span>
+                    </div>
+                </div>
+                <div class="row py-1 border-top border-bottom border-black">
+                    <div class="col-4 border-end border-black">
+                        <h3>Vehiculos y Patentes</h3>
+                        <!-- <span
+                            class=" mx-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">
+                            {{turno.patente}}
+                        </span> -->
+                    </div>
+                    <div class="col-4 border-end border-black">
+                        <h3 class="m-0">Gastos Buffet</h3>
+                        <div *ngIf="turno.mercaderiaList && turno.mercaderiaList.length > 0">
+                            <button mat-button aria-label="Example icon button with a heart icon"
+                                style="background-color: #59001E; color: #FFFFFF;" matTooltip="Cerrar Turno"
+                                [matTooltipPosition]="'right'"
+                                (click)="listadoMercaderia(turno.mercaderiaList, turno.habitacionDto.nombre)">
+                                Consumiciones
+                            </button>
+                            <div class="my-2">
+                                <span
+                                    class="px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">Total:
+                                    <strong>{{calcularTotal(turno) | currency}}</strong></span>
+                            </div>
+                        </div>
+
+                        <!-- <div class="accordion accordion-flush" id="accordionFlushExample"
+                            *ngIf="turno.mercaderiaList && turno.mercaderiaList.length > 0">
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                        aria-controls="flush-collapseOne">
+                                        Consumiciones
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item d-flex justify-content-between align-items-start"
+                                                *ngFor="let merc of turno.mercaderiaList;">
+                                                <div class="ms-2 me-auto">
+                                                    {{merc.nombre}}
+                                                </div>
+                                                <span
+                                                    class="badge bg-info rounded-pill fw-lighter">{{merc.precio.toString()
+                                                    | currency}}</span>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> -->
+                    </div>
+                    <div class="col-4">
+                        <h3>Total</h3>
+                        <span
+                            class=" px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">
+                            {{turno.precioTotal.toString() | currency}}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row p-2 justify-content-evenly">
+
+                    <button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon"
+                        matTooltip="Agregar Producto" [matTooltipPosition]="'right'"
+                        (click)="addMercaderiaDialog(turno)">
+                        <mat-icon>add_shopping_cart</mat-icon>
+                    </button>
+                    <button mat-mini-fab color="accent" aria-label="Example icon button with a delete icon"
+                        matTooltip="Agregar tiempo" [matTooltipPosition]="'right'" (click)="addTimeDialog(turno)">
+                        <mat-icon>more_time</mat-icon>
+                    </button>
+                    <button mat-mini-fab color="warn" aria-label="Example icon button with a heart icon"
+                        matTooltip="Cerrar Turno" [matTooltipPosition]="'right'" (click)="closeTurno(turno)">
+                        <mat-icon>close</mat-icon>
+                    </button>
+
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated"
+                        [ngClass]="{'bg-success' : turno.progress < 50, 'bg-warning' : turno.progress > 50 && turno.progress < 99, 'bg-danger' : turno.progress > 100}"
+                        role="progressbar" [style.width]="turno.progress ? turno.progress + '%' : 0" aria-valuemin="0"
+                        aria-valuemax="100">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

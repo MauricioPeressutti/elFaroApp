@@ -35,6 +35,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { AddTimeDialogComponent } from './pages/secure/dialog/add-time-dialog/add-time-dialog.component';
 import { UserGestionComponent } from './pages/secure/user-gestion/user-gestion.component';
 import { AuthInterceptor } from './service/util/authInterceptor.service';
+import { ListadoMercaderiaDialogComponent } from './pages/secure/dialog/listado-mercaderia-dialog/listado-mercaderia-dialog.component';
+import { TurnGestionComponent } from './pages/secure/turn-gestion/turn-gestion.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,9 @@ import { AuthInterceptor } from './service/util/authInterceptor.service';
     MercaderiaComponentComponent,
     AddMercaderiaDialogComponent,
     AddTimeDialogComponent,
-    UserGestionComponent
+    UserGestionComponent,
+    ListadoMercaderiaDialogComponent,
+    TurnGestionComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +76,8 @@ import { AuthInterceptor } from './service/util/authInterceptor.service';
     MatTableModule,
     MatSlideToggleModule,
     MatDividerModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCardModule,
 
   ],
   providers: [AuthGuard, AuthenticationService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
